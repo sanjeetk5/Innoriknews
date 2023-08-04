@@ -15,11 +15,17 @@ const Singlesave = () => {
     <>
       <Navbar />
 
-      <Box>
-        {item?.map((el) => {
-          return <SingleGridItem {...el} />;
-        })}
-      </Box>
+      {item.length == 0 ? (
+        <Box >
+          <Text fontSize={"2xl"} >Nothing Here. Just save your article and read it later</Text>
+        </Box>
+      ) : (
+        <Box>
+          {item?.map((el) => {
+            return <SingleGridItem {...el} />;
+          })}
+        </Box>
+      )}
     </>
   );
 };
