@@ -31,7 +31,7 @@ user.post('/register',async(req,res)=>{
         }else{
             bcrypt.hash(req.body.password,5,async(err,hash)=>{
             if(hash){
-                const user=new UserModel({userName:req.body.userName,email:req.body.email,password:hash});
+                const user=new UserModel({name:req.body.name,email:req.body.email,password:hash});
                 await user.save();
                 res.status(201).send({"Success":"User create successful"});
             }else{
@@ -40,7 +40,7 @@ user.post('/register',async(req,res)=>{
         })
     }
     } catch (error) {
-        res.status(501).send({"error":"failed to create the admin"});
+        res.status(501).send({"error":"failed to create the user"});
     }
 });
 
